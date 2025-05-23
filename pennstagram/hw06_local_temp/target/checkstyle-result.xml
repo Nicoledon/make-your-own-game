@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.2.1">
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/SimpleManipulations.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/AdvancedManipulations.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/Effects.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/Pixel.java">
+<error line="64" column="35" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="65" column="9" severity="warning" message="WhitespaceAround: &apos;if&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="65" column="22" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="67" column="9" severity="warning" message="WhitespaceAround: &apos;}&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="67" column="10" severity="warning" message="WhitespaceAround: &apos;else&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="67" column="31" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="69" column="9" severity="warning" message="WhitespaceAround: &apos;}&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="69" column="10" severity="warning" message="WhitespaceAround: &apos;else&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="69" column="10" severity="warning" message="WhitespaceAround: &apos;else&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="69" column="14" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="155" column="10" severity="warning" message="&apos;if&apos; 缩进了9个缩进符，应为8个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="155" column="10" severity="warning" message="WhitespaceAround: &apos;if&apos; is not followed by whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="155" column="24" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="156" column="14" severity="warning" message="&apos;if&apos; 子元素缩进了13个缩进符，应为12个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="157" column="10" severity="warning" message="&apos;if rcurly&apos; 缩进了9个缩进符，应为8个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="158" column="10" severity="warning" message="&apos;method def&apos; 子元素缩进了9个缩进符，应为8个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="187" column="10" severity="warning" message="&apos;if&apos; 缩进了9个缩进符，应为8个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="187" column="79" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="189" column="10" severity="warning" message="&apos;if rcurly&apos; 缩进了9个缩进符，应为8个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="190" column="10" severity="warning" message="&apos;method def&apos; 子元素缩进了9个缩进符，应为8个。" source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/ColorMap.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/GUI.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/PixelPicture.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/main/java/org/cis1200/PointQueue.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/test/java/org/cis1200/ImageTest.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/test/java/org/cis1200/ManipulateTest.java">
+</file>
+<file name="/home/jeff/cis120-java/pennstagram/hw06_local_temp/src/test/java/org/cis1200/MyPixelTest.java">
+<error line="50" column="34" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="56" column="30" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="62" column="32" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="67" column="36" severity="warning" message="WhitespaceAround: &apos;{&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+</checkstyle>
