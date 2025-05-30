@@ -1,5 +1,7 @@
 package org.cis1200;
 
+import java.util.Vector;
+
 public class AdvancedManipulations {
 
     /**
@@ -38,7 +40,29 @@ public class AdvancedManipulations {
     public static PixelPicture adjustContrast(
             PixelPicture pic, double multiplier
     ) {
-        return pic;
+        int avg = avgcoloer(pic);
+        Pixel[][] bmp = pic.getBitmap();
+        Pixel[][] ref = new Pixel[pic.getHeight()][pic.getWidth()];
+        for (int i = 0; i < pic.getWidth(); i++) {
+            for (int j = 0; j < pic.getHeight(); j++) {
+                int r = (int) (((bmp[j][i].getRed() - avg) * multiplier) + avg);
+                int g = (int) (((bmp[j][i].getGreen() - avg) * multiplier) + avg);
+                int b = (int) (((bmp[j][i].getBlue() - avg) * multiplier) + avg);
+                ref[j][i] = new Pixel(r, g, b);
+            }
+        }
+        return new PixelPicture(ref);
+    }
+
+    private static int avgcoloer(PixelPicture pic) {
+        int sum = 0;
+        Pixel[][] bmp = pic.getBitmap();
+        for (int i = 0; i < pic.getWidth(); i++) {
+            for (int j = 0; j < pic.getHeight(); j++) {
+                sum += (bmp[j][i].getBlue() + bmp[j][i].getRed() + bmp[j][i].getGreen());
+            }
+        }
+        return (int) Math.round(sum / (3 * pic.getHeight() * pic.getWidth()));
     }
 
     /**
@@ -88,7 +112,37 @@ public class AdvancedManipulations {
      * @return the new reduced picture
      */
     public static PixelPicture reducePalette(PixelPicture pic, int numColors) {
-        return pic;
+        ColorMap m = new ColorMap();
+        Pixel[][] bmp = pic.getBitmap();
+        for (int i = 0; i < pic.getWidth(); i++) {
+            for (int j = 0; j < pic.getHeight(); j++) {
+                int r = bmp[j][i].getRed();
+                int g = bmp[j][i].getGreen();
+                int b = bmp[j][i].getBlue();
+                Pixel p = new Pixel(r, g, b);
+                if (m.contains(p)) {
+                    m.put(p, m.getValue(p) + 1);
+                } else {
+                    m.put(p, 1);
+                }
+            }
+        }
+        Pixel[] p = m.getSortedPixels();
+        Pixel[][] ref = new Pixel[pic.getHeight()][pic.getWidth()];
+        for (int i = 0; i < pic.getWidth(); i++) {
+            for (int j = 0; j < pic.getHeight(); j++) {
+                Pixel temp = null;
+                int dis = Integer.MAX_VALUE;
+                for (int k = 0; k < numColors; k++) {
+                    if (bmp[j][i].distance(p[k]) < dis) {
+                        dis = bmp[j][i].distance(p[k]);
+                        temp = p[k];
+                    }
+                }
+                ref[j][i] = temp;
+            }
+        }
+        return new PixelPicture(ref);
     }
 
     /**
@@ -148,6 +202,7 @@ public class AdvancedManipulations {
      * @return A blurred version of the original picture.
      */
     public static PixelPicture blur(PixelPicture pic, int radius) {
+        
         return pic;
     }
 

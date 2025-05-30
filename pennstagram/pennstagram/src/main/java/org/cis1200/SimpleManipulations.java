@@ -1,5 +1,7 @@
 package org.cis1200;
 
+import java.awt.print.PrinterIOException;
+
 /*
  * The purpose of this assignment is to (re-) acquaint you with Java.
  *
@@ -92,9 +94,9 @@ public class SimpleManipulations {
 
         Pixel[][] src = pic.getBitmap();
         Pixel[][] tgt = new Pixel[w][h]; // swap coordinates
-        for (int col = 0 ; col < w ; col ++) {
-            for (int row = 0 ; row < h ; row ++) {
-                tgt[w - col - 1][row]= src[row][col];
+        for (int col = 0; col < w; col++) {
+            for (int row = 0; row < h; row++) {
+                tgt[w - col - 1][row] = src[row][col];
             }
         }
         return new PixelPicture(tgt);
@@ -113,15 +115,16 @@ public class SimpleManipulations {
     ) {
         int w = pic.getWidth();
         int h = pic.getHeight();
-        Pixel[][]src = pic.getBitmap();
+        Pixel[][] src = pic.getBitmap();
         Pixel[][] tgt = new Pixel[h + 2 * borderWidth][w + 2 * borderWidth];
-        for (int row = 0 ; row < w + 2 * borderWidth ; row ++) {
-            for (int col = 0 ; col < h + 2 * borderWidth ; col ++) {
-                 if (row < borderWidth || col < borderWidth || row >= w + borderWidth || col >= h + borderWidth ) {
-                       tgt[col][row] = borderColor;
-                 } else {
-                      tgt[col][row] = src[col - borderWidth][row - borderWidth];
-                 }
+        for (int row = 0; row < w + 2 * borderWidth; row++) {
+            for (int col = 0; col < h + 2 * borderWidth; col++) {
+                if (row < borderWidth || col < borderWidth || row >= w + borderWidth
+                        || col >= h + borderWidth) {
+                    tgt[col][row] = borderColor;
+                } else {
+                    tgt[col][row] = src[col - borderWidth][row - borderWidth];
+                }
             }
         }
         return new PixelPicture(tgt);
@@ -181,20 +184,20 @@ public class SimpleManipulations {
      * @return new picture with inverted colors
      */
     public static PixelPicture invertColors(PixelPicture pic) {
-            int w = pic.getWidth();
-            int h = pic.getHeight();
+        int w = pic.getWidth();
+        int h = pic.getHeight();
 
-            Pixel[][] bmp = pic.getBitmap();
-            for (int col = 0; col < w; col++) {
-                for (int row = 0; row < h; row++) {
-                    Pixel p = bmp[row][col];
-                    int r = p.getRed();
-                    int g = p.getGreen();
-                    int b = p.getBlue();
-                    bmp[row][col] = new Pixel(255 - r, 255 -g , 255 -b);
-                }
+        Pixel[][] bmp = pic.getBitmap();
+        for (int col = 0; col < w; col++) {
+            for (int row = 0; row < h; row++) {
+                Pixel p = bmp[row][col];
+                int r = p.getRed();
+                int g = p.getGreen();
+                int b = p.getBlue();
+                bmp[row][col] = new Pixel(255 - r, 255 - g, 255 - b);
             }
-            return new PixelPicture(bmp);
+        }
+        return new PixelPicture(bmp);
     }
 
     /**
@@ -226,8 +229,8 @@ public class SimpleManipulations {
                 int r = p.getRed();
                 int g = p.getGreen();
                 int b = p.getBlue();
-                int avg = (int)Math.round((r * 1.0  + g * 1.0 + b * 1.0) / 3);
-                bmp[col][row] = new Pixel(avg , avg,avg);
+                int avg = (int) Math.round((r * 1.0 + g * 1.0 + b * 1.0) / 3);
+                bmp[col][row] = new Pixel(avg, avg, avg);
             }
         }
         return new PixelPicture(bmp);
@@ -264,7 +267,10 @@ public class SimpleManipulations {
                 int r = p.getRed();
                 int g = p.getGreen();
                 int b = p.getBlue();
-                bmp[col][row] = new Pixel((int)Math.round(r * rFactor) , (int)Math.round(g * gFactor) ,(int)Math.round(b * bFactor));
+                bmp[col][row] = new Pixel(
+                        (int) Math.round(r * rFactor), (int) Math.round(g * gFactor),
+                        (int) Math.round(b * bFactor)
+                );
             }
         }
         return new PixelPicture(bmp);
@@ -303,10 +309,30 @@ public class SimpleManipulations {
      *
      * @return the blended image
      */
+
     public static PixelPicture alphaBlend(
             double alpha, PixelPicture pic, PixelPicture f
     ) {
-        return pic;
+        if (pic.getHeight() != f.getHeight() || pic.getWidth() != pic.getWidth()) {
+            return pic;
+        } else {
+            Pixel[][] P = pic.getBitmap();
+            Pixel[][] F = f.getBitmap();
+            Pixel[][] blend = pic.getBitmap();
+            for (int i = 0; i < pic.getWidth(); i++) {
+                for (int j = 0; j < pic.getHeight(); j++) {
+                    Pixel picture = P[j][i];
+                    Pixel ref = F[j][i];
+                    int r = (int) Math.round((1 - alpha) * ref.getRed() + alpha * picture.getRed());
+                    int g = (int) Math
+                            .round((1 - alpha) * ref.getGreen() + alpha * picture.getGreen());
+                    int b = (int) Math
+                            .round((1 - alpha) * ref.getBlue() + alpha * picture.getBlue());
+                    blend[j][i] = new Pixel(r, g, b);
+                }
+            }
+            return new PixelPicture(blend);
+        }
     }
 
     /*
@@ -369,7 +395,6 @@ public class SimpleManipulations {
                 if (r == 0) {
                     return pic;
                 }
-
                 double d = Math.sqrt((dx * dx) + (dy * dy)) / r;
                 double factor = 1.0 - d * d;
 
@@ -378,7 +403,6 @@ public class SimpleManipulations {
                         (int) Math.round(bmp[row][col].getGreen() * factor),
                         (int) Math.round(bmp[row][col].getBlue() * factor)
                 );
-
             }
         }
         return new PixelPicture(bmp);
