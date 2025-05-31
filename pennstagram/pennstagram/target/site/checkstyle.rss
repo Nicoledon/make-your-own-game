@@ -27,7 +27,7 @@ under the License.
     <item>
       <title>File: 11,
              Errors: 0,
-             Warnings: 57,
+             Warnings: 4,
              Infos: 0
       </title>
             <link>https://www.seas.upenn.edu/~cis120/current/hw/hw06//checkstyle.html</link>
@@ -136,7 +136,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  17
+                  1
                 </td>
                 <td>
                   0
@@ -178,7 +178,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  40
+                  3
                 </td>
                 <td>
                   0

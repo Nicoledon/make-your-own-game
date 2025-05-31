@@ -106,12 +106,12 @@ public class ImageTest {
 
     @Test
     public void testAlphaBlend() {
-        PixelPicture item = new PixelPicture(LOCATION + "ItalyBlendGrayScaleAvg.png");
+        PixelPicture p = new PixelPicture(LOCATION + "ItalyGrayScaleAverage.png");
         assertEquals(
                 0,
                 PixelPicture.diff(
                         new PixelPicture(LOCATION + "ItalyBlendGrayScaleAvg.png"),
-                        SimpleManipulations.alphaBlend(0.3, ITALY, item)
+                        SimpleManipulations.alphaBlend(0.3, ITALY, p)
                 ),
                 "alpha-Blend"
         );

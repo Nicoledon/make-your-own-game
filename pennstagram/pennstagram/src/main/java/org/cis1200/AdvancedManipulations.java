@@ -202,12 +202,48 @@ public class AdvancedManipulations {
      * @return A blurred version of the original picture.
      */
     public static PixelPicture blur(PixelPicture pic, int radius) {
-        
-        return pic;
+        Pixel[][] bmp = pic.getBitmap();
+        Pixel[][] ref = new Pixel[pic.getHeight()][pic.getWidth()];
+        for (int i = 0; i < pic.getWidth(); i++) {
+            for (int j = 0; j < pic.getHeight(); j++) {
+                surround(bmp, ref, i, j, pic.getWidth(), pic.getHeight(), radius);
+            }
+        }
+        return new PixelPicture(ref);
     }
 
     // NOTE: You may want to add a static helper function here to
     // help find the average color around the pixel you are blurring.
+    private static boolean outbound(int row, int col, int width, int height) {
+        if (row < 0 || row >= width || col < 0 || col >= height) {
+            return true;
+        }
+        return false;
+    }
+
+    private static void surround(
+            Pixel[][] bmp, Pixel[][] ref, int row, int col, int width, int height, int radius
+    ) {
+        int starX = row - radius;
+        int starY = col - radius;
+        int endX = row + radius;
+        int endY = col + radius;
+        int r = 0, g = 0, b = 0, count = 0;
+        for (int i = starX; i <= endX; i++) {
+            for (int j = starY; j <= endY; j++) {
+                if (!outbound(i, j, width, height)) {
+                    r += bmp[j][i].getRed();
+                    g += bmp[j][i].getGreen();
+                    b += bmp[j][i].getBlue();
+                    count += 1;
+                }
+            }
+        }
+        r = (int) Math.round((float) r / count);
+        g = (int) Math.round((float) g / count);
+        b = (int) Math.round((float) b / count);
+        ref[col][row] = new Pixel(r, g, b);
+    }
 
     /**
      * Challenge Problem (this problem is worth 0 points):
